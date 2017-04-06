@@ -1,0 +1,29 @@
+{
+"contains": [
+	{
+		"group": "Mplus第三方接入方案",
+		"contains": [
+			{
+				"subject": "术语和缩略语",
+				"mdlink": "term_abbreviations"
+			},
+			{
+				"subject": "接口调用及异常说明",
+				"mdlink": "api_error_desc"
+			},
+			{
+				"subject": "接口列表",
+				"mdlink": "apilist"
+			},
+			{
+				"subject": "错误码表",
+				"mdlink": "errorcode"
+			},
+			{
+				"subject": "扩展接口",
+				"mdlink": "apiextend"
+			}
+		 ]
+        }
+    ]
+}
