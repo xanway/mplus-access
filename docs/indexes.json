@@ -12,16 +12,82 @@
 				"mdlink": "api_error_desc"
 			},
 			{
-				"subject": "接口列表",
-				"mdlink": "apilist"
-			},
-			{
 				"subject": "错误码表",
 				"mdlink": "errorcode"
+			}
+		 ]
+        },
+		{
+			"group": "Mplus第三方接口列表",
+			"contains": [
+				{
+					"subject":"单点登录接口",
+					"mdlink":"ssocheck"
+				},
+				{
+					"subject":"推送接口（开启签名校验）",
+					"mdlink":"push"
+				},
+				{
+					"subject":"管理员接口",
+					"mdlink":"manager"
+				},
+				{
+					"subject":"机构接口",
+					"mdlink":"orgs"
+				},
+				{
+					"subject":"成员接口",
+					"mdlink":"members"
+				},
+				{
+					"subject":"部门接口",
+					"mdlink":"depetments"
+				},
+				{
+					"subject":"设备接口",
+					"mdlink":"device"
+				},
+				{
+					"subject":"虚拟组接口",
+					"mdlink":"virtualgroup"
+				},
+				{
+					"subject":"应用接口",
+					"mdlink":"application"
+				},
+				{
+					"subject":"服务性应用接口",
+					"mdlink":"serviceapp"
+				},
+				{
+					"subject":"待办事件（开启签名校验）",
+					"mdlink":"receiveevent"
+				},
+				{
+					"subject":"个人文档接口",
+					"mdlink":"personaldoc"
+				},
+				{
+					"subject":"可见性策略接口",
+					"mdlink":"policy"
+				}
+			]
+		},
+		{
+		"group": "Mplus第三方扩展接口",
+		"contains": [
+			{
+				"subject": "应用发布接口",
+				"mdlink": "uploadapp"
 			},
 			{
-				"subject": "扩展接口",
-				"mdlink": "apiextend"
+				"subject": "服务发布接口",
+				"mdlink": "uploadservice"
+			},
+			{
+				"subject": "发布结果接口",
+				"mdlink": "uploadresult"
 			}
 		 ]
         }
