@@ -1,0 +1,1377 @@
+# 机构接口 
+
+----------  
+
+<h2 id="cid_0">获得机构列表1.0</h2>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.getorglist</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.0</td>
+      <td>版本定义</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgNameSearch</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{0,40}</td>
+      <td>机构名称匹配查询字段</td>
+   </tr>
+   <tr>
+      <td>orgCodeSearch</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{0,20}</td>
+      <td>机构编码匹配查询字段</td>
+   </tr>
+   <tr>
+      <td>startPage</td>
+      <td>String</td>
+      <td>否</td>
+      <td>\d{-1,n}</td>
+      <td>分页参数-起始页，默认值为1，若为-1，表示查询全部。</td>
+   </tr>
+   <tr>
+      <td>limit</td>
+      <td>String</td>
+      <td>否</td>
+      <td>\d{0,n}</td>
+      <td>分页参数-页面条数，默认为10</td>
+   </tr>
+   <tr>
+      <td>sort</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1)</td>
+      <td>0为升序，1为降序；默认为0</td>
+   </tr>
+   <tr>
+      <td>sortName</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1|2)</td>
+      <td>0为唯一标识字段，1为机构编码，2为机构名称；默认为0</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>类型</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>orgs</td>
+      <td>OrganisationInfo []</td>
+      <td>机构信息列表</td>
+   </tr>
+   <tr>
+      <td>orgSize</td>
+      <td>int</td>
+      <td>机构总数</td>
+   </tr>
+</table>  
+
+OrganisationInfo对象说明：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>orgCode</td>
+      <td>String</td>
+      <td>机构编码</td>
+   </tr>
+   <tr>
+      <td>orgName</td>
+      <td>String</td>
+      <td>机构名称</td>
+   </tr>
+   <tr>
+      <td>userNum</td>
+      <td>int</td>
+      <td>用户数</td>
+   </tr>
+   <tr>
+      <td>deviceNum</td>
+      <td>int</td>
+      <td>设备数</td>
+   </tr>
+   <tr>
+      <td>exmobiAppNum</td>
+      <td>int</td>
+      <td>Exmobi应用数，（该数量受License的限制）</td>
+   </tr>
+   <tr>
+      <td>licenseNum</td>
+      <td>int</td>
+      <td>分配的License数 -1表示无限制</td>
+   </tr>
+   <tr>
+      <td>usedLicenseNum</td>
+      <td>int</td>
+      <td>已用的license数</td>
+   </tr>
+</table>  
+
+<h2 id="cid_1">获得机构列表1.1</h2>  
+
+<font color="red">4.0及以后版本支持</font>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.getorglist</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.1</td>
+      <td>版本定义</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgNameSearch</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{0,40}</td>
+      <td>机构名称匹配查询字段</td>
+   </tr>
+   <tr>
+      <td>orgCodeSearch</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{0,20}</td>
+      <td>机构编码匹配查询字段</td>
+   </tr>
+   <tr>
+      <td>startPage</td>
+      <td>String</td>
+      <td>否</td>
+      <td>\d{-1,n}</td>
+      <td>分页参数-起始页，默认值为1，若为-1，表示查询全部。</td>
+   </tr>
+   <tr>
+      <td>limit</td>
+      <td>String</td>
+      <td>否</td>
+      <td>\d{0,n}</td>
+      <td>分页参数-页面条数，默认为10</td>
+   </tr>
+   <tr>
+      <td>sort</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1)</td>
+      <td>0为升序，1为降序；默认为0</td>
+   </tr>
+   <tr>
+      <td>sortName</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1|2)</td>
+      <td>0为唯一标识字段，1为机构编码，2为机构名称；默认为0</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>类型</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>orgs</td>
+      <td>OrganisationInfo []</td>
+      <td>机构信息列表</td>
+   </tr>
+   <tr>
+      <td>orgSize</td>
+      <td>int</td>
+      <td>机构总数</td>
+   </tr>
+</table>  
+
+OrganisationInfo对象说明：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>orgCode</td>
+      <td>String</td>
+      <td>机构编码</td>
+   </tr>
+   <tr>
+      <td>orgName</td>
+      <td>String</td>
+      <td>机构名称</td>
+   </tr>
+   <tr>
+      <td>userNum</td>
+      <td>int</td>
+      <td>用户数</td>
+   </tr>
+   <tr>
+      <td>deviceNum</td>
+      <td>int</td>
+      <td>设备数</td>
+   </tr>
+   <tr>
+      <td>exmobiAppNum</td>
+      <td>int</td>
+      <td>Exmobi应用数，（该数量受License的限制）</td>
+   </tr>
+   <tr>
+      <td>licenseNum</td>
+      <td>int</td>
+      <td>分配的License数 -1表示无限制</td>
+   </tr>
+   <tr>
+      <td>usedLicenseNum</td>
+      <td>int</td>
+      <td>已用的license数</td>
+   </tr>
+<tr>
+      <td>orgStatus</td>
+      <td>int</td>
+      <td>启用状态，0停用，1启用</td>
+   </tr>
+</table>  
+
+<h2 id="cid_2">查询机构1.0</h2>    
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.getorgconf</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.0</td>
+      <td>版本定义</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgCode</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,20}</td>
+      <td>机构编码，不区分大小写</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>orgCode</td>
+      <td>String</td>
+      <td>机构编码</td>
+   </tr>
+   <tr>
+      <td>orgName</td>
+      <td>String</td>
+      <td>机构名称</td>
+   </tr>
+   <tr>
+      <td>adIp</td>
+      <td>String</td>
+      <td>LDAP地址</td>
+   </tr>
+   <tr>
+      <td>adPort</td>
+      <td>String</td>
+      <td>LDAP端口</td>
+   </tr>
+   <tr>
+      <td>adEncryptType</td>
+      <td>String</td>
+      <td>连接AD服务器的加密方式</td>
+   </tr>
+   <tr>
+      <td>adUsername</td>
+      <td>String</td>
+      <td>登录AD的用户</td>
+   </tr>
+   <tr>
+      <td>adPassword</td>
+      <td>String</td>
+      <td>登录AD的密码</td>
+   </tr>
+   <tr>
+      <td>rootDNs</td>
+      <td>String</td>
+      <td>AD中根节点的DN</td>
+   </tr>
+   <tr>
+      <td>filterExpr</td>
+      <td>String</td>
+      <td>AD过滤器表达式</td>
+   </tr>
+   <tr>
+      <td>deptFlag</td>
+      <td>String</td>
+      <td>部门AD标记</td>
+   </tr>
+   <tr>
+      <td>userFlag</td>
+      <td>String</td>
+      <td>用户AD标记</td>
+   </tr>
+   <tr>
+      <td>syncDepDNs</td>
+      <td>String</td>
+      <td>AD同步部门DN</td>
+   </tr>
+   <tr>
+      <td>scanStrategy</td>
+      <td>String</td>
+      <td>扫描策略1 属性关联扫描，2 树形方式扫描</td>
+   </tr>
+   <tr>
+      <td>nameFlag</td>
+      <td>String</td>
+      <td>姓名的属性名称</td>
+   </tr>
+   <tr>
+      <td>mailFlag</td>
+      <td>String</td>
+      <td>邮箱的属性名称</td>
+   </tr>
+   <tr>
+      <td>phoneFlag</td>
+      <td>String</td>
+      <td>手机号码的属性名称</td>
+   </tr>
+   <tr>
+      <td>loginIdFlag</td>
+      <td>String</td>
+      <td>登录ID对应的属性名称</td>
+   </tr>
+</table>  
+
+<h2 id="cid_3">查询机构1.1</h2>    
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.getorgconf</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.1</td>
+      <td>版本定义</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgCode</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,20}</td>
+      <td>机构编码，不区分大小写</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>orgCode</td>
+      <td>String</td>
+      <td>机构编码</td>
+   </tr>
+   <tr>
+      <td>orgName</td>
+      <td>String</td>
+      <td>机构名称</td>
+   </tr>
+ <tr>
+      <td>orgStatus</td>
+      <td>String</td>
+      <td>启用状态，0停用，1启用</td>
+   </tr>
+   <tr>
+      <td>adIp</td>
+      <td>String</td>
+      <td>LDAP地址</td>
+   </tr>
+   <tr>
+      <td>adPort</td>
+      <td>String</td>
+      <td>LDAP端口</td>
+   </tr>
+   <tr>
+      <td>adEncryptType</td>
+      <td>String</td>
+      <td>连接AD服务器的加密方式</td>
+   </tr>
+   <tr>
+      <td>adUsername</td>
+      <td>String</td>
+      <td>登录AD的用户</td>
+   </tr>
+   <tr>
+      <td>adPassword</td>
+      <td>String</td>
+      <td>登录AD的密码</td>
+   </tr>
+   <tr>
+      <td>rootDNs</td>
+      <td>String</td>
+      <td>AD中根节点的DN</td>
+   </tr>
+   <tr>
+      <td>filterExpr</td>
+      <td>String</td>
+      <td>AD过滤器表达式</td>
+   </tr>
+   <tr>
+      <td>deptFlag</td>
+      <td>String</td>
+      <td>部门AD标记</td>
+   </tr>
+   <tr>
+      <td>userFlag</td>
+      <td>String</td>
+      <td>用户AD标记</td>
+   </tr>
+   <tr>
+      <td>syncDepDNs</td>
+      <td>String</td>
+      <td>AD同步部门DN</td>
+   </tr>
+   <tr>
+      <td>scanStrategy</td>
+      <td>String</td>
+      <td>扫描策略1 属性关联扫描，2 树形方式扫描</td>
+   </tr>
+   <tr>
+      <td>nameFlag</td>
+      <td>String</td>
+      <td>姓名的属性名称</td>
+   </tr>
+   <tr>
+      <td>mailFlag</td>
+      <td>String</td>
+      <td>邮箱的属性名称</td>
+   </tr>
+   <tr>
+      <td>phoneFlag</td>
+      <td>String</td>
+      <td>手机号码的属性名称</td>
+   </tr>
+   <tr>
+      <td>loginIdFlag</td>
+      <td>String</td>
+      <td>登录ID对应的属性名称</td>
+   </tr>
+</table>  
+
+<h2 id="cid_4">新增机构1.0</h2>    
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.addorg</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.0</td>
+      <td>版本定义</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgName</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,40}</td>
+      <td>机构名称字段，非空字符串</td>
+   </tr>
+   <tr>
+      <td>orgCode</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,20}</td>
+      <td>机构编码字段，非空字符串</td>
+   </tr>
+   <tr>
+      <td>memo</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{0,200}</td>
+      <td>机构描述</td>
+   </tr>
+   <tr>
+      <td>assignedLicenseNum</td>
+      <td>String</td>
+      <td>是</td>
+      <td>\d{-1,n}</td>
+      <td>分配证书数，-1为无限制</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>机构唯一标识</td>
+   </tr>
+</table>  
+
+<h2 id="cid_5">新增机构1.1</h2>    
+
+<font color="red">2.9.2及以后版本支持</font>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.addorg</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.1</td>
+      <td>版本定义</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgName</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,40}</td>
+      <td>机构名称字段，非空字符串</td>
+   </tr>
+   <tr>
+      <td>orgCode</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,20}</td>
+      <td>机构编码字段，非空字符串</td>
+   </tr>
+   <tr>
+      <td>memo</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{0,200}</td>
+      <td>机构描述</td>
+   </tr>
+   <tr>
+      <td>assignedLicenseNum</td>
+      <td>String</td>
+      <td>是</td>
+      <td>\d{-1,n}</td>
+      <td>分配证书数，-1为无限制</td>
+   </tr>
+<tr>
+      <td>isShow</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1)</td>
+      <td>展示敏感信息，1-展示（默认），0-不展示</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>机构唯一标识</td>
+   </tr>
+</table>  
+
+<h2 id="cid_6">删除机构1.0</h2>   
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.delorg</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.0</td>
+      <td>版本定义</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>resultCode</td>
+      <td>String</td>
+      <td>结果 0 成功</td>
+   </tr>
+</table>  
+
+<h2 id="cid_7">修改机构1.0</h2>   
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.modifyorg</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.0</td>
+      <td>版本定义</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>orgName</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,40}</td>
+      <td>机构名称字段，非空字符串</td>
+   </tr>
+   <tr>
+      <td>memo</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{0,200}</td>
+      <td>机构描述</td>
+   </tr>
+   <tr>
+      <td>assignedLicenseNum</td>
+      <td>String</td>
+      <td>是</td>
+      <td>\d{-1,n}</td>
+      <td>分配证书数，-1为无限制</td>
+   </tr>
+</table>    
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>resultCode</td>
+      <td>String</td>
+      <td>结果 0 成功</td>
+   </tr>
+</table>  
+
+<h2 id="cid_8">修改机构1.1</h2>   
+
+<font color="red">2.9.2及以后版本支持</font>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.modifyorg</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.1</td>
+      <td>版本定义</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>orgName</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,40}</td>
+      <td>机构名称字段，非空字符串</td>
+   </tr>
+   <tr>
+      <td>memo</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{0,200}</td>
+      <td>机构描述</td>
+   </tr>
+   <tr>
+      <td>assignedLicenseNum</td>
+      <td>String</td>
+      <td>是</td>
+      <td>\d{-1,n}</td>
+      <td>分配证书数，-1为无限制</td>
+   </tr>
+<tr>
+      <td>isShow</td>
+      <td>String</td>
+      <td>是</td>
+      <td>(0|1)</td>
+      <td>展示敏感信息，1-展示（默认），0-不展示</td>
+   </tr>
+</table>    
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>resultCode</td>
+      <td>String</td>
+      <td>结果 0 成功</td>
+   </tr>
+</table>  
+
+<h2 id="cid_9">获取属性组排序1.0</h2>   
+
+<font color="red">3.1.0及以后版本支持</font>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.getattrgrouporder</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.0</td>
+      <td>版本定义</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>attrGroupList</td>
+      <td>GroupOrderPojo[]</td>
+      <td>私有属性组列表</td>
+   </tr>
+</table>  
+
+GroupOrderPojo对象对应的属性：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>groupUuid</td>
+      <td>String</td>
+      <td>属性组数据库标识</td>
+   </tr>
+   <tr>
+      <td>groupName</td>
+      <td>String</td>
+      <td>属性组名</td>
+   </tr>
+   <tr>
+      <td>groupSeq</td>
+      <td>int</td>
+      <td>属性组顺序</td>
+   </tr>
+   <tr>
+      <td>attrModels</td>
+      <td>AttrOrderPojo[]</td>
+      <td>组中私有属性列表</td>
+   </tr>
+</table>  
+
+AttrOrderPojo对象对应的属性：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>attrKey</td>
+      <td>String</td>
+      <td>属性键（对应用户扩展属性key）</td>
+   </tr>
+   <tr>
+      <td>attrName</td>
+      <td>String</td>
+      <td>属性名</td>
+   </tr>
+   <tr>
+      <td>attrType</td>
+      <td>int</td>
+      <td>属性类型（0：其他（默认）、1：手机、2：固定电话、3：邮箱）</td>
+   </tr>
+   <tr>
+      <td>attrSeq</td>
+      <td>int</td>
+      <td>属性顺序</td>
+   </tr>
+   <tr>
+      <td>attrRole</td>
+      <td>int</td>
+      <td>是否为权限字段；0：不是，1：是</td>
+   </tr>
+</table>  
+
+<h2 id="cid_10">获取属性组排序1.1</h2>   
+
+<font color="red">4.1.0及以后版本支持</font>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.getattrgrouporder</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.1</td>
+      <td>版本定义</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>attrGroupList</td>
+      <td>GroupOrderPojo[]</td>
+      <td>私有属性组列表</td>
+   </tr>
+</table>  
+
+GroupOrderPojo对象对应的属性：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>groupUuid</td>
+      <td>String</td>
+      <td>属性组数据库标识</td>
+   </tr>
+   <tr>
+      <td>groupName</td>
+      <td>String</td>
+      <td>属性组名</td>
+   </tr>
+   <tr>
+      <td>groupSeq</td>
+      <td>int</td>
+      <td>属性组顺序</td>
+   </tr>
+   <tr>
+      <td>attrModels</td>
+      <td>AttrOrderPojo[]</td>
+      <td>组中私有属性列表</td>
+   </tr>
+</table>  
+
+AttrOrderPojo对象对应的属性：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>attrKey</td>
+      <td>String</td>
+      <td>属性键（对应用户扩展属性key）</td>
+   </tr>
+   <tr>
+      <td>attrName</td>
+      <td>String</td>
+      <td>属性名</td>
+   </tr>
+   <tr>
+      <td>attrType</td>
+      <td>int</td>
+      <td>属性类型（0：其他（默认）、1：手机、2：固定电话、3：邮箱）</td>
+   </tr>
+   <tr>
+      <td>attrSeq</td>
+      <td>int</td>
+      <td>属性顺序</td>
+   </tr>
+   <tr>
+      <td>attrRole</td>
+      <td>int</td>
+      <td>是否为权限字段；0：不是，1：是</td>
+   </tr>
+<tr>
+      <td>attrLen</td>
+      <td>int</td>
+      <td>属性对应字段值的长度限制</td>
+   </tr>
+<tr>
+      <td>attrEnum</td>
+      <td>String[]</td>
+      <td>属性对应的枚举类型值，内容为空或者至少两个元素。</td>
+   </tr>
+</table>  
+
+<h2 id="cid_11">获取机构扩展属性1.0</h2>    
+
+<font color="red">4.1.0及以后版本支持</font>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.getprivattrconf</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.0</td>
+      <td>版本定义</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>attrModels</td>
+      <td>AttrConfPojo[]</td>
+      <td>私有属性组列表</td>
+   </tr>
+   <tr>
+      <td>size</td>
+      <td>int</td>
+      <td>attrModels的数量</td>
+   </tr>
+</table>  
+
+AttrConfPojo对象对应的属性：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>attrKey</td>
+      <td>String</td>
+      <td>属性键（对应用户扩展属性key）</td>
+   </tr>
+   <tr>
+      <td>attrDefaultVal</td>
+      <td>String</td>
+      <td>属性默认值</td>
+   </tr>
+   <tr>
+      <td>attrName</td>
+      <td>String</td>
+      <td>属性名</td>
+   </tr>
+   <tr>
+      <td>attrType</td>
+      <td>int</td>
+      <td>属性类型（0：其他（默认）、1：手机、2：固定电话、3：邮箱）</td>
+   </tr>
+   <tr>
+      <td>attrSeq</td>
+      <td>int</td>
+      <td>属性顺序，保留字段，暂时不用</td>
+   </tr>
+   <tr>
+      <td>attrRole</td>
+      <td>int</td>
+      <td>是否为权限字段；0：不是，1：是</td>
+   </tr>
+   <tr>
+      <td>attrLen</td>
+      <td>int</td>
+      <td>属性对应字段的长度限制</td>
+   </tr>
+   <tr>
+      <td>attrEnum</td>
+      <td>String[]</td>
+      <td>属性对应的枚举类型值</td>
+   </tr>
+</table>  
+

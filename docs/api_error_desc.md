@@ -4,7 +4,7 @@
 
 <h2 id="cid_0">接口调用</h2>  
 
-统一的接入url为：https://ip:port/thirdpartaccess ，请求类型为POST。  
+<font color="red">除扩展接口外，</font>其他接口统一的接入url为：https://ip:port/thirdpartaccess ，请求类型为POST。  
 
 系统级通用请求参数： 
 
