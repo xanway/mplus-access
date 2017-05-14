@@ -2527,7 +2527,7 @@ sign=29527769592CB3BFF883C623FD087E248B19657F&v=1.4&method=mobileark.addbatchuse
    </tr>
 </table>  
 
-<h2 id="cid_17">批量修改成员</h2>  
+<h2 id="cid_17">批量修改成员1.4</h2>  
 
 <font color="red">4.0及以后版本支持</font>  
 
@@ -2535,9 +2535,26 @@ sign=29527769592CB3BFF883C623FD087E248B19657F&v=1.4&method=mobileark.addbatchuse
 
 系统参数：  
 
-系统参数	类型	值	描述
-method	String	mobileark.batch.modifyuser	接口定义
-v	String	1.4	版本定义  
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.batch.modifyuser</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.4</td>
+      <td>版本定义</td>
+   </tr>
+</table>  
 
 业务层参数：  
 
@@ -2728,7 +2745,7 @@ jsonStr的格式为下面Bean对象数组的Json格式。
    </tr>
 </table>  
 
-<h2 id="cid_19">激活/不激活成功1.0</h2>  
+<h2 id="cid_19">激活/不激活成员1.0</h2>  
 
 <font color="red">3.2及以后版本支持</font>  
 
