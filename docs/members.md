@@ -1,0 +1,3244 @@
+# 成员接口 
+
+----------  
+
+<h2 id="cid_0">获得成员列表1.0</h2>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.getusers</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.0</td>
+      <td>接口版本</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>loginId</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{0,36}</td>
+      <td>登录帐号</td>
+   </tr>
+   <tr>
+      <td>depUuid</td>
+      <td>String</td>
+      <td>否</td>
+      <td>[a-zA-Z0-9_-]{0,36}</td>
+      <td>部门唯一标识，默认为orgUuid</td>
+   </tr>
+   <tr>
+      <td>depScope</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1)</td>
+      <td>部门范围，0表示当前部门成员，1表示部门及子部门所有成员，默认为0。</td>
+   </tr>
+   <tr>
+      <td>userName</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{0,48}</td>
+      <td>用户名</td>
+   </tr>
+   <tr>
+      <td>phoneNumber</td>
+      <td>String</td>
+      <td>否</td>
+      <td>\d{0,15}</td>
+      <td>手机号码</td>
+   </tr>
+   <tr>
+      <td>startPage</td>
+      <td>String</td>
+      <td>否</td>
+      <td>\d{1,n}</td>
+      <td>分页参数-起始页，默认值为1</td>
+   </tr>
+   <tr>
+      <td>limit</td>
+      <td>String</td>
+      <td>否</td>
+      <td>\d{0,n}</td>
+      <td>分页参数-页面条数，默认为10</td>
+   </tr>
+   <tr>
+      <td>sort</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1)</td>
+      <td>0为升序，1为降序；默认为0</td>
+   </tr>
+   <tr>
+      <td>sortName</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1|2)</td>
+      <td>0为唯一标识字段，1为登录帐号，2用户名。默认为0</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>类型</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>userInfos</td>
+      <td>UserInfo[]</td>
+      <td>成员信息列表</td>
+   </tr>
+   <tr>
+      <td>userSize</td>
+      <td>int</td>
+      <td>成员总数</td>
+   </tr>
+</table>  
+
+UserInfo对象说明：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>depUuid</td>
+      <td>String</td>
+      <td>部门唯一标示</td>
+   </tr>
+   <tr>
+      <td>userUuid</td>
+      <td>String</td>
+      <td>用户唯一标示</td>
+   </tr>
+   <tr>
+      <td>userName</td>
+      <td>String</td>
+      <td>用户名</td>
+   </tr>
+   <tr>
+      <td>loginId</td>
+      <td>String</td>
+      <td>登录帐号</td>
+   </tr>
+   <tr>
+      <td>phoneNumber</td>
+      <td>String</td>
+      <td>手机号码</td>
+   </tr>
+   <tr>
+      <td>emailAddress</td>
+      <td>String </td>
+      <td>邮件地址</td>
+   </tr>
+   <tr>
+      <td>department</td>
+      <td>String</td>
+      <td>部门，从根部门开始，以\分隔各个部门</td>
+   </tr>
+   <tr>
+      <td>memo</td>
+      <td>String</td>
+      <td>备注</td>
+   </tr>
+   <tr>
+      <td>handsetNum</td>
+      <td>int</td>
+      <td>设备数</td>
+   </tr>
+   <tr>
+      <td><font color="red">appNum</font></td>
+      <td><font color="red">int</font></td>
+      <td><font color="red">授权应用数，3.3.0及以后版本废弃此属性，值为0</font></td>
+   </tr>
+   <tr>
+      <td>userStatus</td>
+      <td>int</td>
+      <td>用户状态0：锁定1：正常2：注销中</td>
+   </tr>
+</table>  
+
+<h2 id="cid_1">获得成员列表1.1</h2>  
+
+<font color="red">2.9.2及以后版本支持</font>
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.getusers</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.1</td>
+      <td>接口版本</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>loginId</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{0,36}</td>
+      <td>登录帐号</td>
+   </tr>
+   <tr>
+      <td>depUuid</td>
+      <td>String</td>
+      <td>否</td>
+      <td>[a-zA-Z0-9_-]{0,36}</td>
+      <td>部门唯一标识，默认为orgUuid</td>
+   </tr>
+   <tr>
+      <td>depScope</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1)</td>
+      <td>部门范围，0表示当前部门成员，1表示部门及子部门所有成员，默认为0。</td>
+   </tr>
+   <tr>
+      <td>userName</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{0,48}</td>
+      <td>用户名</td>
+   </tr>
+   <tr>
+      <td>phoneNumber</td>
+      <td>String</td>
+      <td>否</td>
+      <td>\d{0,15}</td>
+      <td>手机号码</td>
+   </tr>
+   <tr>
+      <td>startPage</td>
+      <td>String</td>
+      <td>否</td>
+      <td>\d{1,n}</td>
+      <td>分页参数-起始页，默认值为1</td>
+   </tr>
+   <tr>
+      <td>limit</td>
+      <td>String</td>
+      <td>否</td>
+      <td>\d{0,n}</td>
+      <td>分页参数-页面条数，默认为10</td>
+   </tr>
+   <tr>
+      <td>sort</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1)</td>
+      <td>0为升序，1为降序；默认为0</td>
+   </tr>
+   <tr>
+      <td>sortName</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1|2)</td>
+      <td>0为唯一标识字段，1为登录帐号，2用户名。默认为0</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>类型</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>userInfos</td>
+      <td>UserInfo[]</td>
+      <td>成员信息列表</td>
+   </tr>
+   <tr>
+      <td>userSize</td>
+      <td>int</td>
+      <td>成员总数</td>
+   </tr>
+</table>  
+
+UserInfo对象说明：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>depUuid</td>
+      <td>String</td>
+      <td>部门唯一标示</td>
+   </tr>
+   <tr>
+      <td>userUuid</td>
+      <td>String</td>
+      <td>用户唯一标示</td>
+   </tr>
+   <tr>
+      <td>userName</td>
+      <td>String</td>
+      <td>用户名</td>
+   </tr>
+   <tr>
+      <td>loginId</td>
+      <td>String</td>
+      <td>登录帐号</td>
+   </tr>
+   <tr>
+      <td>phoneNumber</td>
+      <td>String</td>
+      <td>手机号码</td>
+   </tr>
+   <tr>
+      <td>emailAddress</td>
+      <td>String </td>
+      <td>邮件地址</td>
+   </tr>
+   <tr>
+      <td>department</td>
+      <td>String</td>
+      <td>部门，从根部门开始，以\分隔各个部门</td>
+   </tr>
+   <tr>
+      <td>memo</td>
+      <td>String</td>
+      <td>备注</td>
+   </tr>
+   <tr>
+      <td>handsetNum</td>
+      <td>int</td>
+      <td>设备数</td>
+   </tr>
+   <tr>
+      <td><font color="red">appNum</font></td>
+      <td><font color="red">int</font></td>
+      <td><font color="red">授权应用数，3.3.0及以后版本废弃此属性，值为0</font></td>
+   </tr>
+   <tr>
+      <td>userStatus</td>
+      <td>int</td>
+      <td>用户状态0：锁定1：正常2：注销中</td>
+   </tr>
+ <tr>
+      <td>userAttrs</td>
+      <td>String</td>
+      <td>用户私有属性。例如："userAttrs":{"name":"ceshi","key":"value","ip":"192.168.4.100"}</td>
+   </tr>
+</table>  
+
+<h2 id="cid_2">获得成员列表1.2</h2>  
+
+<font color="red">3.0.0及以后版本支持</font>
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.getusers</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.2</td>
+      <td>接口版本</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>loginId</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{0,36}</td>
+      <td>登录帐号</td>
+   </tr>
+   <tr>
+      <td>depUuid</td>
+      <td>String</td>
+      <td>否</td>
+      <td>[a-zA-Z0-9_-]{0,36}</td>
+      <td>部门唯一标识，默认为orgUuid</td>
+   </tr>
+   <tr>
+      <td>depScope</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1)</td>
+      <td>部门范围，0表示当前部门成员，1表示部门及子部门所有成员，默认为0。</td>
+   </tr>
+   <tr>
+      <td>userName</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{0,48}</td>
+      <td>用户名</td>
+   </tr>
+   <tr>
+      <td>phoneNumber</td>
+      <td>String</td>
+      <td>否</td>
+      <td>\d{0,15}</td>
+      <td>手机号码</td>
+   </tr>
+   <tr>
+      <td>startPage</td>
+      <td>String</td>
+      <td>否</td>
+      <td>\d{1,n}</td>
+      <td>分页参数-起始页，默认值为1</td>
+   </tr>
+   <tr>
+      <td>limit</td>
+      <td>String</td>
+      <td>否</td>
+      <td>\d{0,n}</td>
+      <td>分页参数-页面条数，默认为10</td>
+   </tr>
+   <tr>
+      <td>sort</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1)</td>
+      <td>0为升序，1为降序；默认为0</td>
+   </tr>
+   <tr>
+      <td>sortName</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1|2)</td>
+      <td>0为唯一标识字段，1为登录帐号，2用户名。默认为0</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>类型</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>userInfos</td>
+      <td>UserInfo[]</td>
+      <td>成员信息列表</td>
+   </tr>
+   <tr>
+      <td>userSize</td>
+      <td>int</td>
+      <td>成员总数</td>
+   </tr>
+</table>  
+
+UserInfo对象说明：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>depUuid</td>
+      <td>String</td>
+      <td>部门唯一标示</td>
+   </tr>
+   <tr>
+      <td>userUuid</td>
+      <td>String</td>
+      <td>用户唯一标示</td>
+   </tr>
+   <tr>
+      <td>userName</td>
+      <td>String</td>
+      <td>用户名</td>
+   </tr>
+   <tr>
+      <td>loginId</td>
+      <td>String</td>
+      <td>登录帐号</td>
+   </tr>
+   <tr>
+      <td>phoneNumber</td>
+      <td>String</td>
+      <td>手机号码</td>
+   </tr>
+   <tr>
+      <td>emailAddress</td>
+      <td>String </td>
+      <td>邮件地址</td>
+   </tr>
+   <tr>
+      <td>department</td>
+      <td>String</td>
+      <td>部门，从根部门开始，以\分隔各个部门</td>
+   </tr>
+   <tr>
+      <td>memo</td>
+      <td>String</td>
+      <td>备注</td>
+   </tr>
+   <tr>
+      <td>handsetNum</td>
+      <td>int</td>
+      <td>设备数</td>
+   </tr>
+   <tr>
+      <td><font color="red">appNum</font></td>
+      <td><font color="red">int</font></td>
+      <td><font color="red">授权应用数，3.3.0及以后版本废弃此属性，值为0</font></td>
+   </tr>
+   <tr>
+      <td>userStatus</td>
+      <td>int</td>
+      <td>用户状态0：锁定1：正常2：注销中</td>
+   </tr>
+ <tr>
+      <td>userAttrs</td>
+      <td>String</td>
+      <td>用户私有属性。例如："userAttrs":{"name":"ceshi","key":"value","ip":"192.168.4.100"}</td>
+   </tr>
+<tr>
+      <td>avatarUrl</td>
+      <td>String</td>
+      <td>头像下载地址</td>
+   </tr>
+<tr>
+      <td>updateTime</td>
+      <td>Long</td>
+      <td>修改时间</td>
+   </tr>
+<tr>
+      <td>userWeight</td>
+      <td>int</td>
+      <td>用户权重，默认为99999999</td>
+   </tr>
+</table>  
+
+<h2 id="cid_3">获得成员列表1.3</h2>  
+
+<font color="red">3.2及以后版本支持</font>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.getusers</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.3</td>
+      <td>接口版本</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>loginId</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{0,36}</td>
+      <td>登录帐号</td>
+   </tr>
+   <tr>
+      <td>depUuid</td>
+      <td>String</td>
+      <td>否</td>
+      <td>[a-zA-Z0-9_-]{0,36}</td>
+      <td>部门唯一标识，默认为orgUuid</td>
+   </tr>
+   <tr>
+      <td>depScope</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1)</td>
+      <td>部门范围，0表示当前部门成员，1表示部门及子部门所有成员，默认为0。</td>
+   </tr>
+   <tr>
+      <td>userName</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{0,48}</td>
+      <td>用户名</td>
+   </tr>
+   <tr>
+      <td>phoneNumber</td>
+      <td>String</td>
+      <td>否</td>
+      <td>\d{0,15}</td>
+      <td>手机号码</td>
+   </tr>
+   <tr>
+      <td>startPage</td>
+      <td>String</td>
+      <td>否</td>
+      <td>\d{1,n}</td>
+      <td>分页参数-起始页，默认值为1</td>
+   </tr>
+   <tr>
+      <td>limit</td>
+      <td>String</td>
+      <td>否</td>
+      <td>\d{0,n}</td>
+      <td>分页参数-页面条数，默认为10</td>
+   </tr>
+   <tr>
+      <td>sort</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1)</td>
+      <td>0为升序，1为降序；默认为0</td>
+   </tr>
+   <tr>
+      <td>sortName</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1|2)</td>
+      <td>0为唯一标识字段，1为登录帐号，2用户名。默认为0</td>
+   </tr>
+<tr>
+      <td>isActiveSearch</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1)</td>
+      <td>激活用户过滤，0标识未激活，1标识激活</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>类型</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>userInfos</td>
+      <td>UserInfo[]</td>
+      <td>成员信息列表</td>
+   </tr>
+   <tr>
+      <td>userSize</td>
+      <td>int</td>
+      <td>成员总数</td>
+   </tr>
+</table>  
+
+UserInfo对象说明：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>depUuid</td>
+      <td>String</td>
+      <td>部门唯一标示</td>
+   </tr>
+   <tr>
+      <td>userUuid</td>
+      <td>String</td>
+      <td>用户唯一标示</td>
+   </tr>
+   <tr>
+      <td>userName</td>
+      <td>String</td>
+      <td>用户名</td>
+   </tr>
+   <tr>
+      <td>loginId</td>
+      <td>String</td>
+      <td>登录帐号</td>
+   </tr>
+   <tr>
+      <td>phoneNumber</td>
+      <td>String</td>
+      <td>手机号码</td>
+   </tr>
+   <tr>
+      <td>emailAddress</td>
+      <td>String </td>
+      <td>邮件地址</td>
+   </tr>
+   <tr>
+      <td>department</td>
+      <td>String</td>
+      <td>部门，从根部门开始，以\分隔各个部门</td>
+   </tr>
+   <tr>
+      <td>memo</td>
+      <td>String</td>
+      <td>备注</td>
+   </tr>
+   <tr>
+      <td>handsetNum</td>
+      <td>int</td>
+      <td>设备数</td>
+   </tr>
+   <tr>
+      <td><font color="red">appNum</font></td>
+      <td><font color="red">int</font></td>
+      <td><font color="red">授权应用数，3.3.0及以后版本废弃此属性，值为0</font></td>
+   </tr>
+   <tr>
+      <td>userStatus</td>
+      <td>int</td>
+      <td>用户状态0：锁定1：正常2：注销中</td>
+   </tr>
+ <tr>
+      <td>userAttrs</td>
+      <td>String</td>
+      <td>用户私有属性。例如："userAttrs":{"name":"ceshi","key":"value","ip":"192.168.4.100"}</td>
+   </tr>
+<tr>
+      <td>avatarUrl</td>
+      <td>String</td>
+      <td>头像下载地址</td>
+   </tr>
+<tr>
+      <td>updateTime</td>
+      <td>Long</td>
+      <td>修改时间</td>
+   </tr>
+<tr>
+      <td>userWeight</td>
+      <td>int</td>
+      <td>用户权重，默认为99999999</td>
+   </tr>
+<tr>
+      <td>isActive</td>
+      <td>String</td>
+      <td>是否为激活用户，0标识不激活，1标识激活。</td>
+   </tr>
+</table>  
+
+<h2 id="cid_4">获得成员信息1.0</h2>  
+
+<font color="red">3.3.0及以后版本支持</font>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.getuser</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.0</td>
+      <td>接口版本</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>userUuids</td>
+      <td>String[]</td>
+      <td>是</td>
+      <td>{0,36}</td>
+      <td>用户唯一标识</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>类型</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>userInfos</td>
+      <td>UserInfo[]</td>
+      <td>成员信息</td>
+   </tr>
+   <tr>
+      <td>userSize</td>
+      <td>int</td>
+      <td>成员总数</td>
+   </tr>
+</table>  
+
+UserInfo对象说明：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>depUuid</td>
+      <td>String</td>
+      <td>部门唯一标示</td>
+   </tr>
+   <tr>
+      <td>userUuid</td>
+      <td>String</td>
+      <td>用户唯一标示</td>
+   </tr>
+   <tr>
+      <td>userName</td>
+      <td>String</td>
+      <td>用户名</td>
+   </tr>
+   <tr>
+      <td>loginId</td>
+      <td>String</td>
+      <td>登录帐号</td>
+   </tr>
+   <tr>
+      <td>phoneNumber</td>
+      <td>String</td>
+      <td>手机号码</td>
+   </tr>
+   <tr>
+      <td>emailAddress</td>
+      <td>String </td>
+      <td>邮件地址</td>
+   </tr>
+   <tr>
+      <td>department</td>
+      <td>String</td>
+      <td>部门，从根部门开始，以/分隔各个部门</td>
+   </tr>
+   <tr>
+      <td>memo</td>
+      <td>String</td>
+      <td>备注</td>
+   </tr>
+   <tr>
+      <td>userStatus</td>
+      <td>int</td>
+      <td>用户状态0：锁定1：正常2：注销中</td>
+   </tr>
+   <tr>
+      <td>userAttrs</td>
+      <td>String</td>
+      <td>用户私有属性。例如："userAttrs":{"name":"ceshi","key":"value","ip":"192.168.4.100"}</td>
+   </tr>
+   <tr>
+      <td>avatarUrl</td>
+      <td>String</td>
+      <td>头像下载地址</td>
+   </tr>
+   <tr>
+      <td>updateTime</td>
+      <td>Long</td>
+      <td>修改时间</td>
+   </tr>
+   <tr>
+      <td>userWeight</td>
+      <td>int</td>
+      <td>用户权重，默认为99999999</td>
+   </tr>
+   <tr>
+      <td>isActive</td>
+      <td>String</td>
+      <td>是否为激活用户，0标识不激活，1标识激活。</td>
+   </tr>
+</table>  
+
+<h2 id="cid_5">获得成员信息1.1</h2>  
+
+<font color="red">3.3.0及以后版本支持</font>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.getuser</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.1</td>
+      <td>接口版本</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>loginIds</td>
+      <td>String[]</td>
+      <td>是</td>
+      <td>{0,36}</td>
+      <td>用户登录帐号</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>类型</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>userInfos</td>
+      <td>UserInfo[]</td>
+      <td>成员信息</td>
+   </tr>
+   <tr>
+      <td>userSize</td>
+      <td>int</td>
+      <td>成员总数</td>
+   </tr>
+</table>  
+
+UserInfo对象说明：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>depUuid</td>
+      <td>String</td>
+      <td>部门唯一标示</td>
+   </tr>
+   <tr>
+      <td>userUuid</td>
+      <td>String</td>
+      <td>用户唯一标示</td>
+   </tr>
+   <tr>
+      <td>userName</td>
+      <td>String</td>
+      <td>用户名</td>
+   </tr>
+   <tr>
+      <td>loginId</td>
+      <td>String</td>
+      <td>登录帐号</td>
+   </tr>
+   <tr>
+      <td>phoneNumber</td>
+      <td>String</td>
+      <td>手机号码</td>
+   </tr>
+   <tr>
+      <td>emailAddress</td>
+      <td>String </td>
+      <td>邮件地址</td>
+   </tr>
+   <tr>
+      <td>department</td>
+      <td>String</td>
+      <td>部门，从根部门开始，以/分隔各个部门</td>
+   </tr>
+   <tr>
+      <td>memo</td>
+      <td>String</td>
+      <td>备注</td>
+   </tr>
+   <tr>
+      <td>userStatus</td>
+      <td>int</td>
+      <td>用户状态0：锁定1：正常2：注销中</td>
+   </tr>
+   <tr>
+      <td>userAttrs</td>
+      <td>String</td>
+      <td>用户私有属性。例如："userAttrs":{"name":"ceshi","key":"value","ip":"192.168.4.100"}</td>
+   </tr>
+   <tr>
+      <td>avatarUrl</td>
+      <td>String</td>
+      <td>头像下载地址</td>
+   </tr>
+   <tr>
+      <td>updateTime</td>
+      <td>Long</td>
+      <td>修改时间</td>
+   </tr>
+   <tr>
+      <td>userWeight</td>
+      <td>int</td>
+      <td>用户权重，默认为99999999</td>
+   </tr>
+   <tr>
+      <td>isActive</td>
+      <td>String</td>
+      <td>是否为激活用户，0标识不激活，1标识激活。</td>
+   </tr>
+</table>  
+
+<h2 id="cid_6">获得成员信息1.2</h2>  
+
+<font color="red">4.7.0及以后版本支持</font>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.getuser</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.2</td>
+      <td>接口版本</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>userUuids</td>
+      <td>String[]</td>
+      <td>是</td>
+      <td>{0,36}</td>
+      <td>用户唯一标识</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>类型</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>userInfos</td>
+      <td>UserInfo[]</td>
+      <td>成员信息</td>
+   </tr>
+   <tr>
+      <td>userSize</td>
+      <td>int</td>
+      <td>成员总数</td>
+   </tr>
+</table>  
+
+UserInfo对象说明：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>depUuid</td>
+      <td>String</td>
+      <td>部门唯一标示</td>
+   </tr>
+   <tr>
+      <td>userUuid</td>
+      <td>String</td>
+      <td>用户唯一标示</td>
+   </tr>
+   <tr>
+      <td>userName</td>
+      <td>String</td>
+      <td>用户名</td>
+   </tr>
+   <tr>
+      <td>loginId</td>
+      <td>String</td>
+      <td>登录帐号</td>
+   </tr>
+   <tr>
+      <td>phoneNumber</td>
+      <td>String</td>
+      <td>手机号码</td>
+   </tr>
+   <tr>
+      <td>emailAddress</td>
+      <td>String </td>
+      <td>邮件地址</td>
+   </tr>
+   <tr>
+      <td>department</td>
+      <td>String</td>
+      <td>部门，从根部门开始，以/分隔各个部门</td>
+   </tr>
+   <tr>
+      <td>memo</td>
+      <td>String</td>
+      <td>备注</td>
+   </tr>
+   <tr>
+      <td>userStatus</td>
+      <td>int</td>
+      <td>用户状态0：锁定1：正常2：注销中</td>
+   </tr>
+   <tr>
+      <td>userAttrs</td>
+      <td>String</td>
+      <td>用户私有属性。例如："userAttrs":{"name":"ceshi","key":"value","ip":"192.168.4.100"}</td>
+   </tr>
+   <tr>
+      <td>avatarUrl</td>
+      <td>String</td>
+      <td>头像下载地址</td>
+   </tr>
+   <tr>
+      <td>updateTime</td>
+      <td>Long</td>
+      <td>修改时间</td>
+   </tr>
+   <tr>
+      <td>userWeight</td>
+      <td>int</td>
+      <td>用户权重，默认为99999999</td>
+   </tr>
+   <tr>
+      <td>isActive</td>
+      <td>String</td>
+      <td>是否为激活用户，0标识不激活，1标识激活。</td>
+   </tr>
+<tr>
+      <td>userPartDeps</td>
+      <td>String[]</td>
+      <td>一人多岗属性值：depUuid。例如："userPartDeps":["16YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY "]</td>
+   </tr>
+<tr>
+      <td>userPartDepKVs</td>
+      <td>Map<String,String></td>
+      <td>一人多岗属性值：depUuid:createSource。 createSource和用户来源一致,例如："userPartDepKVs": {"16YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY":"5" }</td>
+   </tr>
+<tr>
+      <td>depOrder</td>
+      <td>String</td>
+      <td>部门序列，4位表示层级；如0006001000800044</td>
+   </tr>
+</table>  
+
+<h2 id="cid_7">获得成员信息1.3</h2>  
+
+<font color="red">4.7.0及以后版本支持</font>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.getuser</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.3</td>
+      <td>接口版本</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>loginIds</td>
+      <td>String[]</td>
+      <td>是</td>
+      <td>{0,36}</td>
+      <td>用户登录帐号</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>类型</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>userInfos</td>
+      <td>UserInfo[]</td>
+      <td>成员信息</td>
+   </tr>
+   <tr>
+      <td>userSize</td>
+      <td>int</td>
+      <td>成员总数</td>
+   </tr>
+</table>  
+
+UserInfo对象说明：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>depUuid</td>
+      <td>String</td>
+      <td>部门唯一标示</td>
+   </tr>
+   <tr>
+      <td>userUuid</td>
+      <td>String</td>
+      <td>用户唯一标示</td>
+   </tr>
+   <tr>
+      <td>userName</td>
+      <td>String</td>
+      <td>用户名</td>
+   </tr>
+   <tr>
+      <td>loginId</td>
+      <td>String</td>
+      <td>登录帐号</td>
+   </tr>
+   <tr>
+      <td>phoneNumber</td>
+      <td>String</td>
+      <td>手机号码</td>
+   </tr>
+   <tr>
+      <td>emailAddress</td>
+      <td>String </td>
+      <td>邮件地址</td>
+   </tr>
+   <tr>
+      <td>department</td>
+      <td>String</td>
+      <td>部门，从根部门开始，以/分隔各个部门</td>
+   </tr>
+   <tr>
+      <td>memo</td>
+      <td>String</td>
+      <td>备注</td>
+   </tr>
+   <tr>
+      <td>userStatus</td>
+      <td>int</td>
+      <td>用户状态0：锁定1：正常2：注销中</td>
+   </tr>
+   <tr>
+      <td>userAttrs</td>
+      <td>String</td>
+      <td>用户私有属性。例如："userAttrs":{"name":"ceshi","key":"value","ip":"192.168.4.100"}</td>
+   </tr>
+   <tr>
+      <td>avatarUrl</td>
+      <td>String</td>
+      <td>头像下载地址</td>
+   </tr>
+   <tr>
+      <td>updateTime</td>
+      <td>Long</td>
+      <td>修改时间</td>
+   </tr>
+   <tr>
+      <td>userWeight</td>
+      <td>int</td>
+      <td>用户权重，默认为99999999</td>
+   </tr>
+   <tr>
+      <td>isActive</td>
+      <td>String</td>
+      <td>是否为激活用户，0标识不激活，1标识激活。</td>
+   </tr>
+<tr>
+      <td>userPartDeps</td>
+      <td>String[]</td>
+      <td>一人多岗属性值：depUuid。例如："userPartDeps":["16YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY "]</td>
+   </tr>
+<tr>
+      <td>userPartDepKVs</td>
+      <td>Map<String,String></td>
+      <td>一人多岗属性值：depUuid:createSource。 createSource和用户来源一致,例如："userPartDepKVs": {"16YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY":"5" }</td>
+   </tr>
+<tr>
+      <td>depOrder</td>
+      <td>String</td>
+      <td>部门序列，4位表示层级；如0006001000800044</td>
+   </tr>
+</table>  
+
+<h2 id="cid_8">新增成员1.0</h2>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.adduser</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.0</td>
+      <td>版本定义</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>depUuid</td>
+      <td>String</td>
+      <td>否</td>
+      <td>[a-zA-Z0-9_-]{0,36}</td>
+      <td>部门唯一标识</td>
+   </tr>
+   <tr>
+      <td>loginId</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,36}</td>
+      <td>登录帐号，非空字符串</td>
+   </tr>
+   <tr>
+      <td>loginPassword</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{6,64}</td>
+      <td>登录密码，非空字符串。</td>
+   </tr>
+   <tr>
+      <td>userName</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,48}</td>
+      <td>用户名，非空字符串。</td>
+   </tr>
+   <tr>
+      <td>emailAddress</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,64}</td>
+      <td>邮箱地址，非空字符串。</td>
+   </tr>
+   <tr>
+      <td>isCreateMailAccount</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1)</td>
+      <td>创建邮箱帐号0表示不创建，1表示创建，默认为0。</td>
+   </tr>
+   <tr>
+      <td>phoneNumber</td>
+      <td>String</td>
+      <td>否</td>
+      <td>\d{0,15}</td>
+      <td>手机号码，默认为空。</td>
+   </tr>
+   <tr>
+      <td>memo</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{0,200}</td>
+      <td>备注信息，默认为空。</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>userUuid</td>
+      <td>String</td>
+      <td>成员唯一标识</td>
+   </tr>
+</table>  
+
+<h2 id="cid_9">新增成员1.3</h2>  
+
+<font color="red">3.2及以后版本支持</font>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.adduser</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.3</td>
+      <td>版本定义</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>depUuid</td>
+      <td>String</td>
+      <td>否</td>
+      <td>[a-zA-Z0-9_-]{0,36}</td>
+      <td>部门唯一标识</td>
+   </tr>
+   <tr>
+      <td>loginId</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,36}</td>
+      <td>登录帐号，非空字符串</td>
+   </tr>
+   <tr>
+      <td>loginPassword</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{6,64}</td>
+      <td>登录密码，非空字符串。</td>
+   </tr>
+   <tr>
+      <td>userName</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,48}</td>
+      <td>用户名，非空字符串。</td>
+   </tr>
+   <tr>
+      <td>emailAddress</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,64}</td>
+      <td>邮箱地址，非空字符串。</td>
+   </tr>
+   <tr>
+      <td>isCreateMailAccount</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1)</td>
+      <td>创建邮箱帐号0表示不创建，1表示创建，默认为0。</td>
+   </tr>
+   <tr>
+      <td>phoneNumber</td>
+      <td>String</td>
+      <td>否</td>
+      <td>\d{0,15}</td>
+      <td>手机号码，默认为空。</td>
+   </tr>
+   <tr>
+      <td>memo</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{0,200}</td>
+      <td>备注信息，默认为空。</td>
+   </tr>
+   <tr>
+      <td>userWeight</td>
+      <td>String</td>
+      <td>否</td>
+      <td>1-99999999</td>
+      <td>用户权重</td>
+   </tr>
+   <tr>
+      <td>isActive</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1)</td>
+      <td>是否为激活用户，0标识不激活，1标识激活。默认状态为系统设置的默认值。</td>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>userUuid</td>
+      <td>String</td>
+      <td>成员唯一标识</td>
+   </tr>
+</table>  
+
+<h2 id="cid_10">新增成员1.4</h2>  
+
+<font color="red">3.5及以后版本支持</font>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.adduser</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.4</td>
+      <td>版本定义</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>depUuid</td>
+      <td>String</td>
+      <td>否</td>
+      <td>[a-zA-Z0-9_-]{0,36}</td>
+      <td>部门唯一标识</td>
+   </tr>
+   <tr>
+      <td>loginId</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,36}</td>
+      <td>登录帐号，非空字符串</td>
+   </tr>
+   <tr>
+      <td>loginPassword</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{6,64}</td>
+      <td>登录密码，非空字符串。</td>
+   </tr>
+   <tr>
+      <td>userName</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,48}</td>
+      <td>用户名，非空字符串。</td>
+   </tr>
+   <tr>
+      <td>emailAddress</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,64}</td>
+      <td>邮箱地址，非空字符串。</td>
+   </tr>
+   <tr>
+      <td>isCreateMailAccount</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1)</td>
+      <td>创建邮箱帐号0表示不创建，1表示创建，默认为0。</td>
+   </tr>
+   <tr>
+      <td>phoneNumber</td>
+      <td>String</td>
+      <td>否</td>
+      <td>\d{0,15}</td>
+      <td>手机号码，默认为空。</td>
+   </tr>
+   <tr>
+      <td>memo</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{0,200}</td>
+      <td>备注信息，默认为空。</td>
+   </tr>
+   <tr>
+      <td>userWeight</td>
+      <td>String</td>
+      <td>否</td>
+      <td>1-99999999</td>
+      <td>用户权重</td>
+   </tr>
+   <tr>
+      <td>isActive</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1)</td>
+      <td>是否为激活用户，0标识不激活，1标识激活。默认状态为系统设置的默认值。</td>
+	</tr>
+   <tr>
+      <td>isPwdMd5</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1)</td>
+      <td>密码是否已md5加密。1标识已加密，0标识明文。默认密码为明文，未md5加密。</td>
+	</tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>userUuid</td>
+      <td>String</td>
+      <td>成员唯一标识</td>
+   </tr>
+</table>  
+
+<h2 id="cid_11">批量新增成员1.4</h2>  
+
+<font color="red">4.0及以后版本支持</font>  
+
+说明：基于新增成员（1.4v）接口，提供增强版的批量新增成员接口。  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.batch.adduser</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.4</td>
+      <td>版本定义</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>jsonStr</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+</table>  
+
+jsonStr的格式为下面Bean对象数组的Json格式。  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>depUuid</td>
+      <td>String</td>
+      <td>否</td>
+      <td>[a-zA-Z0-9_-]{0,36}</td>
+      <td>部门唯一标识</td>
+   </tr>
+   <tr>
+      <td>loginId</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,36}</td>
+      <td>登录帐号，非空字符串</td>
+   </tr>
+   <tr>
+      <td>loginPassword</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{6,64}</td>
+      <td>登录密码，非空字符串。</td>
+   </tr>
+   <tr>
+      <td>userName</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,48}</td>
+      <td>用户名，非空字符串。</td>
+   </tr>
+   <tr>
+      <td>emailAddress</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,64}</td>
+      <td>邮箱地址，非空字符串。</td>
+   </tr>
+   <tr>
+      <td>isCreateMailAccount</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1)</td>
+      <td>创建邮箱帐号0表示不创建，1表示创建，默认为0。</td>
+   </tr>
+   <tr>
+      <td>phoneNumber</td>
+      <td>String</td>
+      <td>否</td>
+      <td>\d{0,15}</td>
+      <td>手机号码，默认为空。</td>
+   </tr>
+   <tr>
+      <td>memo</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{0,200}</td>
+      <td>备注信息，默认为空。</td>
+   </tr>
+   <tr>
+      <td>userWeight</td>
+      <td>String</td>
+      <td>否</td>
+      <td>1-99999999</td>
+      <td>用户权重</td>
+   </tr>
+   <tr>
+      <td>isActive</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1)</td>
+      <td>是否为激活用户，0标识不激活，1标识激活。默认状态为系统设置的默认值。</td>
+   </tr>
+   <tr>
+      <td>isPwdMd5</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1)</td>
+      <td>密码是否已md5加密。1标识已加密，0标识明文。默认密码为明文，未md5加密。</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>userUuid</td>
+      <td>String</td>
+      <td>成员唯一标识</td>
+   </tr>
+</table>  
+
+例如：jsonStr值样例  
+
+```javascript
+[{"depUuid":"111111111111","emailAddress":"11@11.com","isActive":"1","isCreateMailAccount":"0","isPwdMd5":"0","loginId":"ligonsd","loginPassword":"1ajsdjfiaqerqweasd","memo":"memo....","orgUuid":"2131231231231dfs","phoneNumber":"1234565775232","userName":"撒旦解放拉萨","userWeight":"99"}]  
+```  
+
+完整的请求体：  
+
+sign=29527769592CB3BFF883C623FD087E248B19657F&v=1.4&method=mobileark.addbatchuser&format=json&appKey=EPM&jsonStr=<font color="red">%5B%7B%22depUuid%22%3A%22111111111111%22%2C%22emailAddress%22%3A%2211%4011.com%22%2C%22isActive%22%3A%221%22%2C%22isCreateMailAccount%22%3A%220%22%2C%22isPwdMd5%22%3A%220%22%2C%22loginId%22%3A%22ligonsd%22%2C%22loginPassword%22%3A%221ajsdjfiaqerqweasd%22%2C%22memo%22%3A%22memo....%22%2C%22orgUuid%22%3A%222131231231231dfs%22%2C%22phoneNumber%22%3A%221234565775232%22%2C%22userName%22%3A%22%E6%92%92%E6%97%A6%E8%A7%A3%E6%94%BE%E6%8B%89%E8%90%A8%22%2C%22userWeight%22%3A%2299%22%7D%5D</font>  
+
+
+<h2 id="cid_12">删除成员1.0</h2>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.deluser</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.0</td>
+      <td>版本定义</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>userUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>用户唯一标识</td>
+   </tr>
+   <tr>
+      <td>delType</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(2|3)</td>
+      <td>2：注销用户，系统将注销相关设备，并擦除设备企业数据，擦除成功后系统将删除用户。当用户设备正在被清理是，用户状态（userStatus）值为2。3：彻底删除，系统不再等待设备企业数据擦除的操作返回，直接清理系统中的用户数据。不填默认为2。</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>resultCode</td>
+      <td>String</td>
+      <td>结果 0 成功</td>
+   </tr>
+</table>  
+
+<h2 id="cid_13">批量删除成员1.4</h2>  
+
+<font color="red">4.0及以后版本支持</font>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.batch.deluser</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.4</td>
+      <td>版本定义</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>userUuids</td>
+      <td>String[]</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>用户唯一标识数组</td>
+   </tr>
+   <tr>
+      <td>delType</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(2|3)</td>
+      <td>2：注销用户，系统将注销相关设备，并擦除设备企业数据，擦除成功后系统将删除用户。当用户设备正在被清理是，用户状态（userStatus）值为2。3：彻底删除，系统不再等待设备企业数据擦除的操作返回，直接清理系统中的用户数据。不填默认为2。</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>resultCode</td>
+      <td>String</td>
+      <td>结果 0 成功</td>
+   </tr>
+</table>  
+
+<h2 id="cid_14">修改成员1.0</h2>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.modifyuser</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.0</td>
+      <td>版本定义</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构标识字段</td>
+   </tr>
+   <tr>
+      <td>userUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>用户唯一标识</td>
+   </tr>
+   <tr>
+      <td>depUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>部门标识字段</td>
+   </tr>
+   <tr>
+      <td>userName</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,48}</td>
+      <td>用户名，非空字符串。</td>
+   </tr>
+   <tr>
+      <td>emailAddress</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,64}</td>
+      <td>邮箱地址，非空字符串。</td>
+   </tr>
+   <tr>
+      <td>loginPassword</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{6,64}</td>
+      <td>修改登录密码。空值或者不传值，保持原值。</td>
+   </tr>
+   <tr>
+      <td>phoneNumber</td>
+      <td>String</td>
+      <td>否</td>
+      <td>\d{0,15}</td>
+      <td>手机号码。</td>
+   </tr>
+   <tr>
+      <td>memo</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{0,200}</td>
+      <td>备注信息。</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>resultCode</td>
+      <td>String</td>
+      <td>结果 0 成功</td>
+   </tr>
+</table>  
+
+<h2 id="cid_15">修改成员1.3</h2>  
+
+<font color="red">3.2及以后版本支持</font>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.modifyuser</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.3</td>
+      <td>版本定义</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构标识字段</td>
+   </tr>
+   <tr>
+      <td>userUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>用户唯一标识</td>
+   </tr>
+   <tr>
+      <td>depUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>部门标识字段</td>
+   </tr>
+   <tr>
+      <td>userName</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,48}</td>
+      <td>用户名，非空字符串。</td>
+   </tr>
+   <tr>
+      <td>emailAddress</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,64}</td>
+      <td>邮箱地址，非空字符串。</td>
+   </tr>
+   <tr>
+      <td>loginPassword</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{6,64}</td>
+      <td>修改登录密码。空值或者不传值，保持原值。</td>
+   </tr>
+   <tr>
+      <td>phoneNumber</td>
+      <td>String</td>
+      <td>否</td>
+      <td>\d{0,15}</td>
+      <td>手机号码。</td>
+   </tr>
+   <tr>
+      <td>memo</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{0,200}</td>
+      <td>备注信息。</td>
+   </tr>
+   <tr>
+      <td>userWeight</td>
+      <td>String</td>
+      <td>否</td>
+      <td>1-99999999</td>
+      <td>用户权重</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>resultCode</td>
+      <td>String</td>
+      <td>结果 0 成功</td>
+   </tr>
+</table>  
+
+<h2 id="cid_16">修改成员1.4</h2>  
+
+<font color="red">3.5及以后版本支持</font>  
+
+说明：支持直接修改用户所属部门，而不需要调用移动成员接口。  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.modifyuser</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.4</td>
+      <td>版本定义</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构标识字段</td>
+   </tr>
+   <tr>
+      <td>userUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>用户唯一标识</td>
+   </tr>
+   <tr>
+      <td>depUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>部门标识字段</td>
+   </tr>
+   <tr>
+      <td>userName</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,48}</td>
+      <td>用户名，非空字符串。</td>
+   </tr>
+   <tr>
+      <td>emailAddress</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,64}</td>
+      <td>邮箱地址，非空字符串。</td>
+   </tr>
+   <tr>
+      <td>loginPassword</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{6,64}</td>
+      <td>修改登录密码。空值或者不传值，保持原值。</td>
+   </tr>
+   <tr>
+      <td>phoneNumber</td>
+      <td>String</td>
+      <td>否</td>
+      <td>\d{0,15}</td>
+      <td>手机号码。</td>
+   </tr>
+   <tr>
+      <td>memo</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{0,200}</td>
+      <td>备注信息。</td>
+   </tr>
+   <tr>
+      <td>userWeight</td>
+      <td>String</td>
+      <td>否</td>
+      <td>1-99999999</td>
+      <td>用户权重</td>
+   </tr>
+   <tr>
+      <td>isPwdMd5</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1)</td>
+      <td>密码是否已md5加密。1标识已加密，0标识明文。默认密码为明文，未md5加密。</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>resultCode</td>
+      <td>String</td>
+      <td>结果 0 成功</td>
+   </tr>
+</table>  
+
+<h2 id="cid_17">批量修改成员</h2>  
+
+<font color="red">4.0及以后版本支持</font>  
+
+说明：支持直接修改用户所属部门，而不需要调用移动成员接口。  
+
+系统参数：  
+
+系统参数	类型	值	描述
+method	String	mobileark.batch.modifyuser	接口定义
+v	String	1.4	版本定义  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>jsonStr</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构标识字段</td>
+   </tr>
+</table>  
+
+jsonStr的格式为下面Bean对象数组的Json格式。  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>userUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>用户唯一标识</td>
+   </tr>
+   <tr>
+      <td>depUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>部门标识字段，用户归属部门</td>
+   </tr>
+   <tr>
+      <td>userName</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,48}</td>
+      <td>用户名，非空字符串。</td>
+   </tr>
+   <tr>
+      <td>emailAddress</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,64}</td>
+      <td>邮箱地址，非空字符串。</td>
+   </tr>
+   <tr>
+      <td>loginPassword</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{6,64}</td>
+      <td>修改登录密码。空值或者不传值，保持原值。</td>
+   </tr>
+   <tr>
+      <td>phoneNumber</td>
+      <td>String</td>
+      <td>否</td>
+      <td>\d{0,15}</td>
+      <td>手机号码。</td>
+   </tr>
+   <tr>
+      <td>memo</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{0,200}</td>
+      <td>备注信息。</td>
+   </tr>
+   <tr>
+      <td>userWeight</td>
+      <td>String</td>
+      <td>否</td>
+      <td>1-99999999</td>
+      <td>用户权重</td>
+   </tr>
+   <tr>
+      <td>isPwdMd5</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1)</td>
+      <td>密码是否已md5加密。1标识已加密，0标识明文。默认密码为明文，未md5加密。</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>resultCode</td>
+      <td>String</td>
+      <td>结果 0 成功</td>
+   </tr>
+</table>  
+
+<h2 id="cid_18">移动成员</h2>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.moveuser</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.0</td>
+      <td>版本定义</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>depUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>目标部门标识字段</td>
+   </tr>
+   <tr>
+      <td>userUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>用户唯一标识</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>resultCode</td>
+      <td>String</td>
+      <td>结果 0 成功</td>
+   </tr>
+</table>  
+
+<h2 id="cid_19">激活/不激活成功1.0</h2>  
+
+<font color="red">3.2及以后版本支持</font>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.activeuser</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.3</td>
+      <td>版本定义</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>isActive</td>
+      <td>String</td>
+      <td>是</td>
+      <td>(0|1)</td>
+      <td>激活标识。1、用户激活（可以登录平台的通讯录用户）；0、用户未激活（不可登录平台的通讯录用户）</td>
+   </tr>
+   <tr>
+      <td>userUuids</td>
+      <td>String[]</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>一个或多个用户唯一标识</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>resultCode</td>
+      <td>String</td>
+      <td>结果 0 成功，1失败</td>
+   </tr>
+   <tr>
+      <td>resultMsg</td>
+      <td>String</td>
+      <td>返回信息</td>
+   </tr>
+</table>  
+
+<h2 id="cid_20">增加成员到虚拟组1.0</h2>  
+
+<font color="red">4.2及以后版本支持</font>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.adduser2vgroup</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.0</td>
+      <td>版本</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>vguName</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,10}</td>
+      <td>虚拟组集合名称</td>
+   </tr>
+   <tr>
+      <td>vgName</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,10}</td>
+      <td>虚拟组名称</td>
+   </tr>
+   <tr>
+      <td>loginId</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,36}</td>
+      <td>登录帐号，非空字符串</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>resultCode</td>
+      <td>String</td>
+      <td>结果 0 成功</td>
+   </tr>
+   <tr>
+      <td>resultMsg</td>
+      <td>String</td>
+      <td>结果描述</td>
+   </tr>
+</table>  
+
+<h2 id="cid_21">批量增加成员到虚拟组1.0</h2>  
+
+<font color="red">4.2及以后版本支持</font>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.adduser2vgroupbatch</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.0</td>
+      <td>版本</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>vguName</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,10}</td>
+      <td>虚拟组集合名称</td>
+   </tr>
+   <tr>
+      <td>vgName</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,10}</td>
+      <td>虚拟组名称</td>
+   </tr>
+   <tr>
+      <td>loginIds</td>
+      <td>String[]</td>
+      <td>是</td>
+      <td>{1,*}</td>
+      <td>登录帐号，非空字符串</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>resultCode</td>
+      <td>String</td>
+      <td>结果 1：成功 2：部分成功 3：全部失败</td>
+   </tr>
+   <tr>
+      <td>failLoginid</td>
+      <td>String[]</td>
+      <td>失败的用户列表</td>
+   </tr>
+</table>  
+
+<h2 id="cid_22">解除虚拟组与成员关联1.0</h2>  
+
+<font color="red">4.2及以后版本支持</font>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.removeuser4vgroup</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.0</td>
+      <td>版本</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>vguName</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,10}</td>
+      <td>虚拟组集合名称</td>
+   </tr>
+   <tr>
+      <td>vgName</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,10}</td>
+      <td>虚拟组名称</td>
+   </tr>
+   <tr>
+      <td>loginId</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,36}</td>
+      <td>登录帐号，非空字符串</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>resultCode</td>
+      <td>String</td>
+      <td>结果 0 成功</td>
+   </tr>
+</table>  
+
+<h2 id="cid_23">批量解除虚拟组与成员关联1.0</h2>  
+
+<font color="red">4.2及以后版本支持</font>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.removeuser4vgroupbatch</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.0</td>
+      <td>版本</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>vguName</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,10}</td>
+      <td>虚拟组集合名称</td>
+   </tr>
+   <tr>
+      <td>vgName</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,10}</td>
+      <td>虚拟组名称</td>
+   </tr>
+   <tr>
+      <td>loginIds</td>
+      <td>String[]</td>
+      <td>是</td>
+      <td>{1,*}</td>
+      <td>登录帐号，非空字符串</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>resultCode</td>
+      <td>String</td>
+      <td>结果 1：成功 2：部分成功 3：全部失败</td>
+   </tr>
+   <tr>
+      <td>failLoginid</td>
+      <td>String[]</td>
+      <td>失败的用户列表</td>
+   </tr>
+</table>  
+
+<h2 id="cid_24">批量处理成员与虚拟组关系1.0</h2>  
+
+<font color="red">4.2及以后版本支持</font>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.optuser2vgroupbatch</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.0</td>
+      <td>版本</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>vguName</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,10}</td>
+      <td>虚拟组集合名称</td>
+   </tr>
+   <tr>
+      <td>jsonStr</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{1,*}</td>
+      <td>处理的json字符串</td>
+   </tr>
+</table>  
+
+jsonStr字符串为json数组形式。  格式如下：  
+
+```javascript
+[{"loginId":"xxx","vgNames":["xx","xxx"],"delvgNames":["xxxx"]},{"loginId":"xxx","vgNames":["xx","xxx"],"delvgNames":["xxxx","xxxxxx"]},…]
+```  
+
+loginId为成员帐号，vgNames为成员所属虚拟组，delvgNames为成员不属于的虚拟组。  
+
+
+处理顺序：先新增的vgNames，后处理delvgNames。  
+
+响应业务参数：(处理结果不再作细分说明)  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>resultCode</td>
+      <td>String</td>
+      <td>结果 0 成功</td>
+   </tr>
+   <tr>
+      <td>resultMsg</td>
+      <td>String</td>
+      <td>结果说明</td>
+   </tr>
+</table>  
+
