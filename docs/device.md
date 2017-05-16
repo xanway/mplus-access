@@ -1,0 +1,1015 @@
+# 设备接口 
+
+----------  
+
+<h2 id="cid_0">获得设备详细1.0</h2>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.getdevicedetail</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.0</td>
+      <td>版本</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>userUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>用户唯一标识</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>类型</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>deviceInfos</td>
+      <td>DeviceInfo[]</td>
+      <td>设备信息列表</td>
+   </tr>
+   <tr>
+      <td>deviceSize</td>
+      <td>int</td>
+      <td>用户设备数</td>
+   </tr>
+</table>  
+
+DeviceInfo对象说明：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>handsetUuid</td>
+      <td>String</td>
+      <td>设备唯一标识</td>
+   </tr>
+   <tr>
+      <td>mdmStatus</td>
+      <td>String</td>
+      <td>设备受管状态，1 受MDM管控，0 未受MDM管控，2删除中，3 脱管中</td>
+   </tr>
+   <tr>
+      <td>availableCapacity</td>
+      <td>String</td>
+      <td>内存监控（单位G），"已使用/总容量"，如："0.63/1.12"</td>
+   </tr>
+   <tr>
+      <td>availableMemory</td>
+      <td>String</td>
+      <td>存储监控（单位G），"已使用/总容量"</td>
+   </tr>
+   <tr>
+      <td>availableSD</td>
+      <td>String</td>
+      <td>SD卡监控（单位G），"已使用/总容量"</td>
+   </tr>
+   <tr>
+      <td>batteryLevel</td>
+      <td>String</td>
+      <td>电量百分比大小, 电量 例如：85 系统认为 85%</td>
+   </tr>
+   <tr>
+      <td>blueToothMac</td>
+      <td>String</td>
+      <td>蓝牙地址</td>
+   </tr>
+   <tr>
+      <td>cellularTechnology</td>
+      <td>String</td>
+      <td>网络类型</td>
+   </tr>
+   <tr>
+      <td>clientVersion</td>
+      <td>String</td>
+      <td>客户端版本</td>
+   </tr>
+   <tr>
+      <td>collectTime</td>
+      <td>String</td>
+      <td>最后采集时间，格式为："yyyy-MM-dd HH:mm:ss"</td>
+   </tr>
+   <tr>
+      <td>dataEncrypt</td>
+      <td>String</td>
+      <td>数据是否加密，0 未加密 1加密</td>
+   </tr>
+   <tr>
+      <td>dataRoaming</td>
+      <td>String</td>
+      <td>数据漫游开关，1 打开 0 关闭</td>
+   </tr>
+   <tr>
+      <td>handsetEsnImei</td>
+      <td>String</td>
+      <td>ESN/IMEI</td>
+   </tr>
+   <tr>
+      <td>handsetImsi</td>
+      <td>String</td>
+      <td>sim卡号</td>
+   </tr>
+   <tr>
+      <td>handsetLoseStatus</td>
+      <td>String</td>
+      <td>设备是否已丢失，1 正常，0 已丢失</td>
+   </tr>
+   <tr>
+      <td>handsetManufacturer</td>
+      <td>String</td>
+      <td>设备生产厂商</td>
+   </tr>
+   <tr>
+      <td>handsetModel</td>
+      <td>String</td>
+      <td>设备型号</td>
+   </tr>
+   <tr>
+      <td>handsetOwner</td>
+      <td>String</td>
+      <td>设备归属，1 归属企业，2 归属个人</td>
+   </tr>
+   <tr>
+      <td>handsetPlatform</td>
+      <td>String</td>
+      <td>操作平台</td>
+   </tr>
+   <tr>
+      <td>handsetPolicyId</td>
+      <td>String</td>
+      <td>设备策略唯一标识</td>
+   </tr>
+   <tr>
+      <td>handsetPolicyName</td>
+      <td>String</td>
+      <td>设备策略</td>
+   </tr>
+   <tr>
+      <td>handsetStatus</td>
+      <td>String</td>
+      <td>设备状态，1-正常，2-访问锁定，用户不能访问应用，3-引爆锁定，清除客户端数据</td>
+   </tr>
+   <tr>
+      <td>isRegular</td>
+      <td>String</td>
+      <td>是否违规，0未违规，1违规</td>
+   </tr>
+   <tr>
+      <td>isRoot</td>
+      <td>String</td>
+      <td>手机是否已越狱，0 未越狱(默认)，1 已越狱</td>
+   </tr>
+   <tr>
+      <td>isTablet</td>
+      <td>String</td>
+      <td>是否是平板, 1 是，0 否</td>
+   </tr>
+   <tr>
+      <td>lastIpAddress</td>
+      <td>String</td>
+      <td>最后登录IP</td>
+   </tr>
+   <tr>
+      <td>lastUsingTime</td>
+      <td>String</td>
+      <td>最后登录时间，格式为"yyyy-MM-dd HH:mm:ss"</td>
+   </tr>
+   <tr>
+      <td>loginId</td>
+      <td>String</td>
+      <td>登录ID</td>
+   </tr>
+   <tr>
+      <td>mobileOperator</td>
+      <td>String</td>
+      <td>运营商</td>
+   </tr>
+   <tr>
+      <td>monthUsedVolume</td>
+      <td>String</td>
+      <td>当月流量（单位M）</td>
+   </tr>
+   <tr>
+      <td>msisdn</td>
+      <td>String</td>
+      <td>移动用户号码</td>
+   </tr>
+   <tr>
+      <td>osType</td>
+      <td>String</td>
+      <td>操作系统</td>
+   </tr>
+   <tr>
+      <td>resolution</td>
+      <td>String</td>
+      <td>终端分辨率，如："480*800"</td>
+   </tr>
+   <tr>
+      <td>screenPasswd</td>
+      <td>String</td>
+      <td>屏幕密码是否设置，0 未设置 1 设置</td>
+   </tr>
+   <tr>
+      <td>sdEncrypt</td>
+      <td>String</td>
+      <td>SD卡是否加密，1 加密 0 未加密</td>
+   </tr>
+   <tr>
+      <td>serialNumber</td>
+      <td>String</td>
+      <td>序列号</td>
+   </tr>
+   <tr>
+      <td>soundRoaming</td>
+      <td>String</td>
+      <td>语音漫游开关，1 打开 0 关闭</td>
+   </tr>
+   <tr>
+      <td>userName</td>
+      <td>String</td>
+      <td>成员名</td>
+   </tr>
+   <tr>
+      <td>wifiMac</td>
+      <td>String</td>
+      <td>wifiMac信息</td>
+   </tr>
+   <tr>
+      <td>personalHotspot</td>
+      <td>String</td>
+      <td>个人热点是否开启</td>
+   </tr>
+</table>  
+
+<h2 id="cid_1">获得设备应用</h2>  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.getdeviceapps</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.0</td>
+      <td>版本</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>handsetUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>设备唯一标识</td>
+   </tr>
+   <tr>
+      <td>startPage</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{0,n}</td>
+      <td>分页参数-起始页，默认为1</td>
+   </tr>
+   <tr>
+      <td>limit</td>
+      <td>String</td>
+      <td>否</td>
+      <td>{0,n}</td>
+      <td>分页参数-查询记录数，默认为10</td>
+   </tr>
+</table>  
+
+响应业务参数:  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>appInfos</td>
+      <td>AppInfo[]</td>
+      <td>应用信息列表</td>
+   </tr>
+   <tr>
+      <td>appSize</td>
+      <td>int</td>
+      <td>应用总数</td>
+   </tr>
+</table>  
+
+AppInfo对象说明  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>appBelong</td>
+      <td>String</td>
+      <td>应用类别，"个人应用"或者"企业应用"</td>
+   </tr>
+   <tr>
+      <td>appId</td>
+      <td>String</td>
+      <td>应用ID，类似包名</td>
+   </tr>
+   <tr>
+      <td>appName</td>
+      <td>String</td>
+      <td>应用名称</td>
+   </tr>
+   <tr>
+      <td>appVersion</td>
+      <td>String</td>
+      <td>应用版本</td>
+   </tr>
+   <tr>
+      <td>isManaged</td>
+      <td>int</td>
+      <td>0不管控(默认)，1受管控</td>
+   </tr>
+</table>  
+
+<h2 id="cid_2">设备管理操作1.0</h2>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.optdevice</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.0</td>
+      <td>版本</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>handsetUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>设备唯一标识</td>
+   </tr>
+   <tr>
+      <td>optType</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{4}</td>
+      <td>操作类型，见设备操作说明表</td>
+   </tr>
+   <tr>
+      <td>optParam</td>
+      <td>String</td>
+      <td>?</td>
+      <td></td>
+      <td>操作参数，根据optType的值确定是否必须。</td>
+   </tr>
+</table>  
+
+<font color="red">注：操作类型为0003的操作，自3.3.0及以后版本，建议使用通知公告接口</font>  
+
+设备操作说明表  
+
+<table>
+   <tr>
+      <td>操作名</td>
+      <td>操作类型（必须值）</td>
+      <td>操作参数是否必须</td>
+      <td>操作约束</td>
+   </tr>
+   <tr>
+      <td>彻底删除设备</td>
+      <td>0001</td>
+      <td>否</td>
+      <td>设备处于删除中时</td>
+   </tr>
+   <tr>
+      <td>注销终端设备</td>
+      <td>0002</td>
+      <td>否</td>
+      <td>无</td>
+   </tr>
+   <tr>
+      <td>发送通知消息</td>
+      <td>0003</td>
+      <td>是，{1,500}。</td>
+      <td>无</td>
+   </tr>
+   <tr>
+      <td>擦除企业数据</td>
+      <td>0004</td>
+      <td>否</td>
+      <td>无</td>
+   </tr>
+   <tr>
+      <td>解锁终端设备</td>
+      <td>0005</td>
+      <td>否</td>
+      <td>设备处于锁定时</td>
+   </tr>
+   <tr>
+      <td>访问锁定终端设备</td>
+      <td>0006</td>
+      <td>否</td>
+      <td>设备处于未锁定时</td>
+   </tr>
+   <tr>
+      <td>引爆锁定终端设备</td>
+      <td>0007</td>
+      <td>否</td>
+      <td>设备处于未锁定时</td>
+   </tr>
+   <tr>
+      <td>更新设备信息</td>
+      <td>0008</td>
+      <td>否</td>
+      <td>设备处于受管或托管</td>
+   </tr>
+   <tr>
+      <td>定位终端设备</td>
+      <td>0009</td>
+      <td>否</td>
+      <td>设备处于受管或托管</td>
+   </tr>
+   <tr>
+      <td>恢复出厂设置</td>
+      <td>0010</td>
+      <td>否</td>
+      <td>设备处于受管或托管</td>
+   </tr>
+   <tr>
+      <td>清除锁屏密码</td>
+      <td>0011</td>
+      <td>否</td>
+      <td>设备处于受管或托管</td>
+   </tr>
+   <tr>
+      <td>终端设备响铃</td>
+      <td>0012</td>
+      <td>否</td>
+      <td>设备处于受管或托管</td>
+   </tr>
+   <tr>
+      <td>锁定终端屏幕</td>
+      <td>0013</td>
+      <td>否</td>
+      <td>设备处于受管或托管</td>
+   </tr>
+   <tr>
+      <td>标记设备丢失</td>
+      <td>0014</td>
+      <td>否</td>
+      <td>设备处于未丢失时</td>
+   </tr>
+   <tr>
+      <td>标记设备找回</td>
+      <td>0015</td>
+      <td>否</td>
+      <td>设备处于丢失时</td>
+   </tr>
+   <tr>
+      <td>设为个人设备</td>
+      <td>0016</td>
+      <td>否</td>
+      <td>设备属于企业时</td>
+   </tr>
+   <tr>
+      <td>设为企业设备</td>
+      <td>0017</td>
+      <td>否</td>
+      <td>设备属于个人时</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>resultCode</td>
+      <td>String</td>
+      <td>结果 0 成功</td>
+   </tr>
+</table>  
+
+<h2 id="cid_3">查询操作执行状态1.0</h2>  
+
+说明：此功能是针对设备管理操作命令执行状态进行的查询，因为部分操作是后台异步执行的。  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.optdevicestatus</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.0</td>
+      <td>版本</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>handsetUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>设备唯一标识</td>
+   </tr>
+   <tr>
+      <td>optType</td>
+      <td>String</td>
+      <td>是</td>
+      <td>{4}</td>
+      <td>操作类型，参见操作说明表。</td>
+   </tr>
+</table>  
+
+操作类型说明表  
+
+<table>
+   <tr>
+      <td>操作名</td>
+      <td>操作类型</td>
+   </tr>
+   <tr>
+      <td>查看更新设备信息指令状态</td>
+      <td>0008</td>
+   </tr>
+   <tr>
+      <td>查看定位终端设备指令状态</td>
+      <td>0009</td>
+   </tr>
+   <tr>
+      <td>查看恢复出厂设置指令状态</td>
+      <td>0010</td>
+   </tr>
+   <tr>
+      <td>查看清除锁屏密码指令状态</td>
+      <td>0011</td>
+   </tr>
+   <tr>
+      <td>查看锁定终端屏幕指令状态</td>
+      <td>0013</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>commandStatus</td>
+      <td>String</td>
+      <td>操作指令执行状态1任务执行中2成功3失败</td>
+   </tr>
+   <tr>
+      <td>startTime</td>
+      <td>String</td>
+      <td>执行指令开始时间</td>
+   </tr>
+   <tr>
+      <td>endTime</td>
+      <td>String</td>
+      <td>执行指令结束时间，执行未结束为空。</td>
+   </tr>
+</table>  
+
+<h2 id="cid_4">查询设备位置1.0</h2>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.locdeviceresult</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.0</td>
+      <td>版本</td>
+   </tr>
+</table>
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>handsetUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>设备唯一标识</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>status</td>
+      <td>String</td>
+      <td>定位结果success、fail、locationing</td>
+   </tr>
+   <tr>
+      <td>lat</td>
+      <td>String</td>
+      <td>纬度值</td>
+   </tr>
+   <tr>
+      <td>lng</td>
+      <td>String</td>
+      <td>经度值</td>
+   </tr>
+   <tr>
+      <td>locDesc</td>
+      <td>String</td>
+      <td>位置描述</td>
+   </tr>
+   <tr>
+      <td>locationTime</td>
+      <td>String</td>
+      <td>定位时间（如2014/4/17 19:31:38）</td>
+   </tr>
+</table>  
+
+<h2 id="cid_5">获得设备策略1.0</h2>  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.getdeviceconfiglist</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.0</td>
+      <td>版本</td>
+   </tr>
+</table>  
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>startPage</td>
+      <td>String</td>
+      <td>否</td>
+      <td>\d{-1,n}</td>
+      <td>分页参数-起始页，默认为1。</td>
+   </tr>
+   <tr>
+      <td>-1表示全查，分页参数失效。</td>
+   </tr>
+   <tr>
+      <td>limit</td>
+      <td>String</td>
+      <td>否</td>
+      <td>\d{0,n}</td>
+      <td>分页参数-页面条数，默认为10</td>
+   </tr>
+   <tr>
+      <td>sort</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1)</td>
+      <td>0为升序，1为降序；默认为0</td>
+   </tr>
+   <tr>
+      <td>sortName</td>
+      <td>String</td>
+      <td>否</td>
+      <td>(0|1|2)</td>
+      <td>0为策略名称，1为策略状态，2为更新时间。默认0</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>类型</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>configInfos</td>
+      <td>ConfigInfo[]</td>
+      <td>设备信息列表</td>
+   </tr>
+   <tr>
+      <td>configSize</td>
+      <td>int</td>
+      <td>用户设备数</td>
+   </tr>
+</table>  
+
+ConfigInfo对象说明：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>configId</td>
+      <td>String</td>
+      <td>设备策略唯一标识</td>
+   </tr>
+   <tr>
+      <td>name</td>
+      <td>String</td>
+      <td>策略名称</td>
+   </tr>
+   <tr>
+      <td>status</td>
+      <td>String</td>
+      <td>策略状态，1 启动，0 禁用</td>
+   </tr>
+   <tr>
+      <td>opType</td>
+      <td>String</td>
+      <td>策略平台，1 IOS，2 Android</td>
+   </tr>
+   <tr>
+      <td>remark</td>
+      <td>String</td>
+      <td>备注</td>
+   </tr>
+   <tr>
+      <td>updateTime</td>
+      <td>String</td>
+      <td>更新时间，格式为yyyy-dd-MM HH:mm:ss</td>
+   </tr>
+   <tr>
+      <td>handsetCount</td>
+      <td>String</td>
+      <td>应用策略的设备（已应用数/已分配数）</td>
+   </tr>
+</table>  
+
+<h2 id="cid_6">设备策略授权部门1.0</h2>  
+
+说明：  
+
+* 设备策略重复授权（多个）部门时，如果已存在授权关系，后台直接更新，不提示“已授权无法重复授权”信息；
+* 取消策略授权（多个）部门时，如果不存在授权关系，不提示“应用未授权此部门，无法取消授权”信息；  
+
+系统参数：  
+
+<table>
+   <tr>
+      <td>系统参数</td>
+      <td>类型</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>method</td>
+      <td>String</td>
+      <td>mobileark.deviceconfigauthdeps</td>
+      <td>接口定义</td>
+   </tr>
+   <tr>
+      <td>v</td>
+      <td>String</td>
+      <td>1.0</td>
+      <td>版本</td>
+   </tr>
+</table>
+
+业务层参数：  
+
+<table>
+   <tr>
+      <td>业务参数</td>
+      <td>类型</td>
+      <td>是否必须</td>
+      <td>字段约束</td>
+      <td>说明</td>
+   </tr>
+   <tr>
+      <td>orgUuid</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>机构唯一标识</td>
+   </tr>
+   <tr>
+      <td>configId</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,46}</td>
+      <td>设备策略唯一标识</td>
+   </tr>
+   <tr>
+      <td>depUuids</td>
+      <td>String</td>
+      <td>是</td>
+      <td>[a-zA-Z0-9_-]{1,36}</td>
+      <td>一个或多个部门唯一标识，约束为单个值约束；多个值用逗号隔开</td>
+   </tr>
+   <tr>
+      <td>opType</td>
+      <td>String</td>
+      <td>是</td>
+      <td>(0|1)</td>
+      <td>0表示授权，1表示取消授权</td>
+   </tr>
+</table>  
+
+响应业务参数：  
+
+<table>
+   <tr>
+      <td>参数</td>
+      <td>值</td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>resultCode</td>
+      <td>String</td>
+      <td>结果 0 成功</td>
+   </tr>
+</table>
