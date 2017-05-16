@@ -293,11 +293,9 @@ Event对象
       <td>String</td>
       <td>否</td>
       <td>{0,1024}</td>
-      <td>应用启动传参，支持${username}、${password}、${token}等变量。例如：usename=${username}&password=${password}&module=1</td>
+      <td>应用启动传参，支持${username}、${password}、${token}等变量。例如：usename=${username}&password=${password}&module=1<br/>html5应用时为地址：例如https://www.baidu.cm</td>
    </tr>
-   <tr>
-      <td>html5应用时为地址：例如https://www.baidu.cm</td>
-   </tr>
+
    <tr>
       <td>eventId</td>
       <td>String</td>
@@ -462,10 +460,7 @@ Event对象<font color="red">（title和summary至少存在其中一个）</font
       <td>String</td>
       <td>否</td>
       <td>{0,1024}</td>
-      <td>应用启动传参，支持${username}、${password}、${token}等变量。例如：usename=${username}&password=${password}&module=1</td>
-   </tr>
-   <tr>
-      <td>html5应用时为地址：例如https://www.baidu.cm</td>
+      <td>应用启动传参，支持${username}、${password}、${token}等变量。例如：usename=${username}&password=${password}&module=1<br/>html5应用时为地址：例如https://www.baidu.cm</td>
    </tr>
    <tr>
       <td>eventId</td>
@@ -631,7 +626,7 @@ Event对象<font color="red">（title和summary至少存在其中一个）</font
       <td>String</td>
       <td>否</td>
       <td>{0,1024}</td>
-      <td>应用启动传参，支持${username}、${password}、${token}等变量。例如：usename=${username}&password=${password}&module=1;html5应用时为地址：例如https://www.baidu.cm</td>
+      <td>应用启动传参，支持${username}、${password}、${token}等变量。例如：usename=${username}&password=${password}&module=1;<br/>html5应用时为地址：例如https://www.baidu.cm</td>
    </tr>
    <tr>
       <td>pcscheme</td>
